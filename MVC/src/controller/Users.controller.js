@@ -28,7 +28,8 @@ class UsersController {
                 token: token,
                 user: {
                     username: user.username,
-                    role: user.role
+                    role: user.role,
+                    municipio: user.municipioAsignado
                 }
             });
 
