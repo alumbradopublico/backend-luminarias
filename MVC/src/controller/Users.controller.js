@@ -36,6 +36,23 @@ class UsersController {
             res.status(401).json({ message: error.message });
         }
     };
+
+    createUser = async (req, res) => {
+        try {
+            const { username, password, role, municipioAsignado } = req.body;
+            
+            const newUser = await this.service.register({ 
+                username, 
+                password, 
+                role, 
+                municipioAsignado 
+            });
+
+            res.json({ message: "Usuario creado con éxito", user: newUser });
+        } catch (error) {
+            res.status(500).json({ message: error.message });
+        }
+    };
 }
 
 export default UsersController;
