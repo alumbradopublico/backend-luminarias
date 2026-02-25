@@ -44,7 +44,6 @@ class LuminairesController {
                 return res.status(400).json({ message: "No se subió ningún archivo." });
             }
 
-            // 1. Configurar OAuth2 con tus credenciales
             const oauth2Client = new google.auth.OAuth2(
                 process.env.GOOGLE_CLIENT_ID,
                 process.env.GOOGLE_CLIENT_SECRET,
@@ -166,9 +165,7 @@ function getDriveIdFromLink(link) {
     if (link.includes('id=')) {
         return link.split('id=')[1];
     }
-    // Si usaste el formato extraño que mencionaste antes o cualquier otro que termine con el ID
-    // Intenta tomar la última parte del string
-    // Ajusta esto según cómo haya quedado guardado tu link final
+    
     return link.split('/').pop().replace('view?usp=drivesdk', ''); 
 }
 
