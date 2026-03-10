@@ -12,6 +12,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors()); 
 
+// Ruta de "salud" para que UptimeRobot mantenga el servidor despierto
+app.get('/', (req, res) => {
+  res.status(200).send('Backend del buscador de luminarias funcionando perfectamente 💡');
+});
+
 mongoose.connect(config.MONGO_URI)
      .then(() => console.log('✅ Conectado a base de datos Mongo Atlas'))
      .catch((error) => console.error('❌ Error al conectar a Mongo:', error));
